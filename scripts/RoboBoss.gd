@@ -8,15 +8,14 @@ var nova_anima = "idle"
 
 
 func _ready():
+	Anima.play("idle")
 	
-	if resposta_errada:
-		nova_anima = "rocket_atack"
 
+
+func rocket_atack():
+	nova_anima = "rocket_atack"
 	Anima.play(nova_anima)
-	
 
-func destroy():
-	
 
 	pass
 
