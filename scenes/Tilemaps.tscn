@@ -9,6 +9,7 @@
 [node name="carvao" type="Sprite" parent="."]
 
 transform/pos = Vector2( 30, 380 )
+z/z = -1
 texture = ExtResource( 1 )
 region = true
 region_rect = Rect2( 963, 0, 64, 191 )
