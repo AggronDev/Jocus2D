@@ -1,15 +1,90 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scripts/canhão.gd" type="Script" id=1]
-[ext_resource path="res://textures/RoboBoss/canon/fireball_1.png" type="Texture" id=2]
+[ext_resource path="res://textures/RoboBoss/canon/canon.png" type="Texture" id=2]
 
-[node name="canon" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
 
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "aguaing"
+length = 0.9
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("canon_img:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("canon_img:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[node name="canon" type="Area2D"]
+
+transform/pos = Vector2( -0.600001, 0 )
+transform/scale = Vector2( 0.91875, 0.9 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.3547, 0, 0, 1, -21.1156, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
 script/script = ExtResource( 1 )
+canon_disp = false
 
 [node name="canon_img" type="Sprite" parent="."]
 
-transform/scale = Vector2( 0.1, 0.1 )
+transform/pos = Vector2( -10.2313, 0 )
+transform/scale = Vector2( 0.22, 0.22 )
 texture = ExtResource( 2 )
+vframes = 4
+hframes = 3
+frame = 3
+
+[node name="Bola de fogo" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/aguaing = SubResource( 2 )
+anims/fireing = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -21.1156, 0 )
+transform/scale = Vector2( 1.3547, 1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="." to="." method="_on_canon_area_enter"]
 
 

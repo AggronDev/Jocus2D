@@ -23,7 +23,6 @@ extents = Vector2( 69.7192, 87.2809 )
 
 [sub_resource type="Animation" id=2]
 
-resource/name = "base"
 length = 1.0
 loop = false
 step = 0.1
@@ -160,7 +159,6 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id=3]
 
-resource/name = "cannon"
 length = 2.0
 loop = false
 step = 0.1
@@ -407,7 +405,6 @@ tracks/23/keys = {
 
 [sub_resource type="Animation" id=4]
 
-resource/name = "damaged"
 length = 2.0
 loop = false
 step = 0.1
@@ -624,6 +621,7 @@ __meta__ = {
 
 [node name="arm_left" type="Sprite" parent="body"]
 
+editor/display_folded = true
 visibility/behind_parent = true
 transform/pos = Vector2( 136, 40 )
 texture = ExtResource( 3 )
@@ -634,7 +632,7 @@ __meta__ = {
 [node name="rocket" type="Sprite" parent="body/arm_left"]
 
 transform/pos = Vector2( 23.8968, 76.1295 )
-transform/rot = -0.0980371
+transform/rot = 1.31709
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_bone_": true
@@ -642,6 +640,7 @@ __meta__ = {
 
 [node name="arm_right" type="Sprite" parent="body"]
 
+editor/display_folded = true
 visibility/behind_parent = true
 transform/pos = Vector2( -92.3475, 35.88 )
 transform/scale = Vector2( 1, 1.15481 )
@@ -652,6 +651,7 @@ __meta__ = {
 
 [node name="cannon" type="Sprite" parent="body/arm_right"]
 
+editor/display_folded = true
 visibility/behind_parent = true
 transform/pos = Vector2( -26, 34 )
 transform/rot = 0.014877
@@ -661,10 +661,15 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="PositionCannon" type="Position2D" parent="body/arm_right/cannon"]
+
+transform/pos = Vector2( -108.319, -1.59574 )
+
 [node name="head" type="Sprite" parent="body"]
 
+editor/display_folded = true
 transform/pos = Vector2( -6.36524e-06, -66.6667 )
-transform/rot = -0.0154631
+transform/rot = 1.24796
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_bone_": true
@@ -673,7 +678,7 @@ __meta__ = {
 [node name="jaw" type="Sprite" parent="body/head"]
 
 transform/pos = Vector2( -5, 36 )
-transform/rot = -0.0821894
+transform/rot = -1.37066
 transform/scale = Vector2( 1.05846, 1 )
 texture = ExtResource( 8 )
 __meta__ = {
@@ -682,7 +687,6 @@ __meta__ = {
 
 [node name="hit" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 10.6775, 33.7108 )
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 9 )

@@ -3,6 +3,8 @@ extends Node
 onready var viewport = get_viewport()
 
 var minimum_size = Vector2(144, 256)
+const INIMIGOS = "inimigos" 
+const HEROI = "heroi"
 
 func _ready():
     viewport.connect("size_changed", self, "window_resize")
